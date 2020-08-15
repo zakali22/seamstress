@@ -34,7 +34,7 @@ const addMarqueeMovement = function(){
         .to(headers[0], {x: (headers[0].clientWidth * -1), duration: 400, ease: 'linear'});
 
     headerBottomTl
-        .to(headers[1], {x: (headers[0].clientWidth * -1), duration: 300, ease: 'linear'})
+        .to(headers[1], {x: (headers[1].clientWidth * -1), duration: 300, ease: 'linear'})
 }
 
 
