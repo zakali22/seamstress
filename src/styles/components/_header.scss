@@ -1,5 +1,35 @@
 .header {
     position: fixed;
-    top: 0;
+    top: 10px;
     left: 0;
+    z-index: 10000;
+
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+
+        p {
+            &:not(:last-of-type){
+                margin-bottom: 0rem;
+            }
+            font-size: 1.6rem;
+            font-weight: 700;
+            flex: 0 0 auto;
+            margin-right: 50px;
+            line-height: 1.75;
+        }
+    }
+}
+
+// CSS Marquee if needed
+
+.marqueeAnim {
+    transform: translateX(0);
+    animation: slideLeft 20s ease 0s infinite both;
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0)}
+    100% { transform: translateX(-4000px)} // Use vw and a very high number
 }
