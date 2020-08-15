@@ -3,11 +3,20 @@ section {
     &.split-panels {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        
+        &.split-panels--alternate {
+            .split-panels__panel:first-of-type {
+                order: 1;
+            }
+        }
 
         .split-panels__panel{
             display: flex;
             align-items: center;
             justify-content: center;
+            @media(max-width: 1200px){
+                width: 50vw;
+            }   
         }
 
         .split-panels__panel--image-side {
