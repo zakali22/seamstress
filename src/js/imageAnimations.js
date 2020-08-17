@@ -62,9 +62,40 @@ imagePanels.forEach(imagePanel => {
     /** Effecient version going backwards */
     imageCount = images.length;
     let zIndexCount = imageCount;
-    images.forEach(image => {
+    images.forEach((image, index) => {
+        image.style.transform = `rotate(${50 * Math.random() - 25}deg)`
         image.style.zIndex = zIndexCount
     })
+
+    const slideInAnimationTl = new TimelineMax({
+        onComplete: function(){
+            bouncingAnimation();
+        }
+    });
+    slideInAnimationTl
+        .set(images, {y: 1000})
+        .to(images, {y: 0, stagger: 0.25, delay: 2, duration: .7})
+        .to(images, { rotation: () => 16 * Math.random() - 8, stagger: 0.3}, "+=.5")
+
+
+    const bouncingAnimation = function(){
+        const bouncingAnimationTl = new TimelineMax({repeat: -1, yoyo: true});
+        bouncingAnimationTl
+            .from(images, {y: 0, ease: "Linear.easeNone" })
+            .to(images, {y: 25, stagger: 0.15, duration: 1.5, ease: "Linear.easeNone" })
+
+        imagePanel.addEventListener('mouseover', () => {
+            console.log("mouse entered")
+            bouncingAnimationTl.pause()
+        })
+
+        imagePanel.addEventListener('mouseleave', () => {
+            console.log("mouse left")
+            bouncingAnimationTl.resume()
+        })
+    }
+    
+
     imagePanel.addEventListener('click', () => {
         // Increment z-index
         zIndexCount--;

@@ -1,12 +1,22 @@
 const headers = document.querySelectorAll('.header div')
 
 const duplicateHeaderText = function(){
-    headers.forEach(headerDiv => {
+    headers.forEach((headerDiv, index) => {
         let textElement = headerDiv.querySelector('p')
-        for(let i = 0; i <= 100; i++){
-            let pTag = document.createElement('P')
-            pTag.append(textElement.innerHTML)
-            headerDiv.append(pTag)
+        if(index === 0){
+            console.log(index)
+            for(let i = 0; i <= 100; i++){
+                let pTag = document.createElement('P')
+                pTag.append(textElement.innerHTML)
+                headerDiv.append(pTag)
+            }
+        } else {
+            console.log(index)
+            for(let i = 0; i <= 70; i++){
+                let pTag = document.createElement('P')
+                pTag.append(textElement.innerHTML)
+                headerDiv.append(pTag)
+            }
         }
     })
 }

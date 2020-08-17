@@ -19,6 +19,12 @@
             margin-right: 50px;
             line-height: 1.75;
         }
+
+        &:first-of-type {
+            p {
+                width: 100px
+            }
+        }
     }
 }
 
