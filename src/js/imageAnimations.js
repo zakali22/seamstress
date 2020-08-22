@@ -129,9 +129,9 @@ imagePanels.forEach(imagePanel => {
                 }
             });
             flipAnimationTl
-                .to(images[imageCount - 1], {x: `${direction}%`, y: 100, rotation: () => rotationAngle * Math.random()})
+                .to(images[imageCount - 1], {x: `${direction}%`, y: 100, scale: 1.2, rotation: () => rotationAngle * Math.random()})
                 .set(images[imageCount - 1], {zIndex: zIndexCount})
-                .to(images[imageCount - 1], {x: 0, y: 0, rotation: 5 * Math.random()})
+                .to(images[imageCount - 1], {x: 0, y: 0, scale: 1, rotation: 5 * Math.random()})
             
     
             // Increment imageCount to go to the next image
