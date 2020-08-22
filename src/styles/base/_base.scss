@@ -60,17 +60,6 @@ button {
         font-size: inherit;
         color: $light-grey;
         margin-top: 2rem;
-        display: flex;
-        
-        img { // Wait for explaination on some of the new properties
-            display: inline-block;
-            width: 11px;
-            margin-left: 10px;
-            height: 16px;
-            vertical-align: middle;
-            object-fit: cover;
-            object-position: center right;
-        }
     }
 }
 

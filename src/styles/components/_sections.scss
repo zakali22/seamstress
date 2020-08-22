@@ -44,6 +44,26 @@ section {
                 .split-panels__text {
                     margin-top: 3.2rem;
                 }
+
+                .btn {
+                    display: inline-flex;
+                    align-items: center;
+        
+                    img { // Wait for explaination on some of the new properties
+                        width: 11px;
+                        margin-left: 10px;
+                        height: 16px; // height of the actual image
+                        object-fit: cover;
+                        object-position: center right;
+                        transition: width .3s ease-in-out
+                    }
+
+                    &:hover, &:focus {
+                        img {
+                            width: 25px; // width of the actual image
+                        }
+                    }
+                }
             }
         }
     }
