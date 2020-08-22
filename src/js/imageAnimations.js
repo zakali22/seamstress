@@ -95,25 +95,43 @@ imagePanels.forEach(imagePanel => {
         })
     }
     
+    let direction = 150;
+    let rotationAngle = 20;
 
     imagePanel.addEventListener('click', () => {
         // Increment z-index
         zIndexCount--;
+
+        console.log(direction)
+
+        if(direction < 0){
+            direction = 150;
+            rotationAngle = -20
+        } else {
+            direction = -150
+        }
+
+        const flipAnimationTl = new TimelineMax({
+            onComplete: function(){
+                if(imageCount <= 0 ) {
+                    console.log("Image count => ", imageCount)
+                    imageCount = images.length
+                    zIndexCount = images.length
+                    images.forEach(image => {
+                        image.style.zIndex = zIndexCount
+                    })
+                }
+            }
+        });
+        flipAnimationTl
+            .to(images[imageCount - 1], {x: `${direction}%`, y: 100, rotation: () => rotationAngle * Math.random()})
+            .set(images[imageCount - 1], {zIndex: zIndexCount})
+            .to(images[imageCount - 1], {x: 0, y: 0, rotation: 5 * Math.random()})
         
-        // Change the z-index of a specific image
-        images[imageCount - 1].style.zIndex = zIndexCount;
 
         // Increment imageCount to go to the next image
         imageCount--;
         // Set the imageCount to the remainder of images left
         // imageCount = imageCount % images.length;
-        if(imageCount <= 0 ) {
-            console.log("Image count => ", imageCount)
-            imageCount = images.length
-            zIndexCount = images.length
-            images.forEach(image => {
-                image.style.zIndex = zIndexCount
-            })
-        }
     })
 })
